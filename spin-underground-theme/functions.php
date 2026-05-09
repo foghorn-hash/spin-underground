@@ -1,0 +1,29 @@
+<?php
+/**
+ * Spin Underground Theme functions and definitions
+ */
+
+if ( ! function_exists( 'spinunderground_setup' ) ) :
+	function spinunderground_setup() {
+		// Let WordPress manage the document title.
+		add_theme_support( 'title-tag' );
+
+		// Enable support for Post Thumbnails on posts and pages.
+		add_theme_support( 'post-thumbnails' );
+	}
+endif;
+add_action( 'after_setup_theme', 'spinunderground_setup' );
+
+/**
+ * Enqueue scripts and styles.
+ */
+function spinunderground_scripts() {
+	// Google Fonts
+	wp_enqueue_style( 'spinunderground-fonts', 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap', array(), null );
+	
+	// Theme stylesheet
+	wp_enqueue_style( 'spinunderground-style', get_stylesheet_uri(), array(), wp_get_theme()->get( 'Version' ) );
+
+    // Main JS (we will enqueue it inline for now, or you can extract it)
+}
+add_action( 'wp_enqueue_scripts', 'spinunderground_scripts' );
