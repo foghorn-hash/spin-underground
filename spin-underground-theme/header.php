@@ -20,9 +20,13 @@
     <nav>
       <div class="logo">
         <?php 
-        $logo_url = get_template_directory_uri() . '/assets/SpinUndergroundV-square.png'; 
+        if ( function_exists( 'has_custom_logo' ) && has_custom_logo() ) {
+            the_custom_logo();
+        } else {
+            $logo_url = get_template_directory_uri() . '/assets/SpinUndergroundV-square.png'; 
+            echo '<a href="' . esc_url( home_url( '/' ) ) . '"><img src="' . esc_url( $logo_url ) . '" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '" /></a>';
+        }
         ?>
-        <img src="<?php echo esc_url( $logo_url ); ?>" alt="<?php bloginfo( 'name' ); ?>" />
       </div>
       <ul class="nav-links" id="navLinks">
         <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>#releases">Audio</a></li>

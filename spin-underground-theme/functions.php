@@ -10,6 +10,14 @@ if ( ! function_exists( 'spinunderground_setup' ) ) :
 
 		// Enable support for Post Thumbnails on posts and pages.
 		add_theme_support( 'post-thumbnails' );
+
+		// Enable support for custom logo.
+		add_theme_support( 'custom-logo', array(
+			'height'      => 250,
+			'width'       => 250,
+			'flex-width'  => true,
+			'flex-height' => true,
+		) );
 	}
 endif;
 add_action( 'after_setup_theme', 'spinunderground_setup' );
