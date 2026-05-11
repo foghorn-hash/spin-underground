@@ -224,7 +224,9 @@ nav {
     border-radius: 50px;
     cursor: pointer;
     font-size: 1rem;
-    transition: transform .3s
+    transition: transform .3s;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .btn:hover,
@@ -282,6 +284,12 @@ nav {
     color: var(--accent);
     text-decoration: none;
     font-size: .9rem
+}
+
+.card-content a.btn {
+    color: var(--light);
+    display: inline-block;
+    margin-top: 1rem;
 }
 
 /* Video Release cards */
@@ -774,3 +782,208 @@ footer {
     transform: scale(1.05);
     background: #e60052;
 }
+
+/* WordPress responsive YouTube embeds */
+.wp-block-embed-youtube,
+.wp-block-embed.is-type-video,
+.wp-block-embed {
+    width: 100%;
+    max-width: 100%;
+}
+
+.wp-block-embed__wrapper,
+.video-wrapper,
+.responsive-video {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.wp-block-embed__wrapper iframe,
+.video-wrapper iframe,
+.responsive-video iframe,
+iframe[src*="youtube.com"],
+iframe[src*="youtu.be"] {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+/* -------------------------------------
+   Artists Archive & Single Styles
+-------------------------------------- */
+
+/* Archive Grid */
+.artist-listing {
+    padding: 4rem 0;
+}
+.artist-card {
+    text-align: center;
+}
+.artist-thumb {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-bottom: 2px solid var(--accent);
+}
+.artist-genres {
+    color: #aaa;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.artist-producer-name {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 1rem;
+}
+
+/* Single Artist Profile */
+.single-artist-container {
+    padding: 4rem 0;
+}
+.artist-profile {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+/* Header (Photo & Info) */
+.artist-header {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    text-align: center;
+}
+@media (min-width: 768px) {
+    .artist-header {
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+    }
+}
+.artist-photo {
+    flex-shrink: 0;
+}
+.artist-photo img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border: 4px solid var(--accent);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+.artist-header-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.artist-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--light);
+    margin-bottom: 0.5rem;
+}
+.artist-header-info .artist-genres {
+    font-size: 1rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+}
+.artist-booking {
+    margin-top: 1rem;
+}
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+}
+.btn-outline:hover {
+    background: var(--accent);
+    color: var(--light);
+}
+
+/* Body (Bio & Links) */
+.artist-body {
+    display: grid;
+    gap: 2rem;
+}
+@media (min-width: 992px) {
+    .artist-body {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+.artist-bio {
+    padding: 2rem;
+    background: #1a1a1a;
+    border-radius: 12px;
+}
+.artist-bio h2 {
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+.bio-content p {
+    margin-bottom: 1rem;
+    color: #eee;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+/* Links Sidebar */
+.artist-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.link-group {
+    padding: 1.5rem;
+    background: #1a1a1a;
+    border-radius: 12px;
+}
+.link-group h3 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    color: var(--light);
+    border-bottom: 1px solid #333;
+    padding-bottom: 0.5rem;
+}
+.link-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.btn-icon {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.3s, opacity 0.3s;
+}
+.btn-icon:hover {
+    transform: translateX(5px);
+    opacity: 0.9;
+}
+.btn-icon i {
+    font-size: 1.2rem;
+}
+
+/* Brand Colors */
+.link-instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+.link-facebook { background: #1877F2; }
+.link-youtube { background: #FF0000; }
+.link-soundcloud { background: #ff5500; }
+.link-spotify { background: #1DB954; color: #000; }
+.link-deezer { background: #EF5466; }
+.link-amazon { background: #00A8E1; color: #000; }
+.link-beatport { background: #01FF95; color: #000; }
+.link-traxsource { background: #22a0ce; }
+.link-juno { background: #1b1b1b; border: 1px solid #333; }

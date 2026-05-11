@@ -33,6 +33,7 @@
         <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>#videos">Videos</a></li>
         <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>#about">About</a></li>
         <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>#contact">Contact</a></li>
+        <li><a href="<?php echo esc_url( get_post_type_archive_link( 'artist' ) ); ?>">Artists</a></li>
         <li><a href="<?php echo esc_url( get_permalink( get_option( 'page_for_posts' ) ) ); ?>">Blog</a></li>
       </ul>
       <div class="burger" id="burger"><span></span><span></span><span></span></div>
