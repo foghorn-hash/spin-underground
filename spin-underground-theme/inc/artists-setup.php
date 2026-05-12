@@ -163,6 +163,12 @@ if( function_exists('acf_add_local_field_group') ):
                 'type' => 'url',
             ),
             array(
+                'key' => 'field_artist_twitch',
+                'label' => 'Twitch URL',
+                'name' => 'twitch_url',
+                'type' => 'url',
+            ),
+            array(
                 'key' => 'field_artist_streaming_tab',
                 'label' => 'Streaming',
                 'name' => '',

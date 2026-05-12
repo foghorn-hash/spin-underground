@@ -72,6 +72,7 @@ get_header(); ?>
                         'facebook_url'  => ['icon' => 'bi-facebook', 'label' => 'Facebook', 'class' => 'link-facebook'],
                         'youtube_url'   => ['icon' => 'bi-youtube', 'label' => 'YouTube', 'class' => 'link-youtube'],
                         'soundcloud_url'=> ['icon' => 'bi-cloud-fill', 'label' => 'SoundCloud', 'class' => 'link-soundcloud'], // Cloud icon for SC
+                        'twitch_url'    => ['icon' => 'bi-twitch', 'label' => 'Twitch', 'class' => 'link-twitch'],
                     ];
                     $has_socials = false;
                     foreach($socials as $key => $data) { if(get_field($key)) $has_socials = true; }

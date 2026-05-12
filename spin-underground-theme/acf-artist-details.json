@@ -161,6 +161,22 @@
                 "placeholder": ""
             },
             {
+                "key": "field_artist_twitch",
+                "label": "Twitch URL",
+                "name": "twitch_url",
+                "type": "url",
+                "instructions": "Enter the Twitch live-streaming URL",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": ""
+            },
+            {
                 "key": "field_artist_streaming_tab",
                 "label": "Streaming",
                 "name": "",

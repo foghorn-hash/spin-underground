@@ -532,6 +532,16 @@ footer {
     margin-bottom: 1.5rem;
 }
 
+.post-content ul,
+.post-content ol {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+}
+
+.post-content li {
+    margin-bottom: 0.5rem;
+}
+
 .post-footer {
     background: transparent !important;
     padding-top: 2rem;
@@ -934,6 +944,19 @@ iframe[src*="youtu.be"] {
     line-height: 1.7;
 }
 
+.bio-content ul,
+.bio-content ol {
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+    color: #eee;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+.bio-content li {
+    margin-bottom: 0.5rem;
+}
+
 /* Links Sidebar */
 .artist-links {
     display: flex;
@@ -981,6 +1004,7 @@ iframe[src*="youtu.be"] {
 .link-facebook { background: #1877F2; }
 .link-youtube { background: #FF0000; }
 .link-soundcloud { background: #ff5500; }
+.link-twitch { background: #9146FF; }
 .link-spotify { background: #1DB954; color: #000; }
 .link-deezer { background: #EF5466; }
 .link-amazon { background: #00A8E1; color: #000; }
