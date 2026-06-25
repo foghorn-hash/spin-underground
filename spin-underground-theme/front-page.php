@@ -36,15 +36,15 @@ get_header(); ?>
 
 <section class="hero">
   <div class="container hero-content">
-    <h1>Feel the Underground Vibe</h1>
-    <p>Cutting-edge techno & house from the heart of Finland.</p>
-    <a href="#releases" class="btn">Latest Releases</a>
+    <h1><?php echo esc_html( get_theme_mod( 'hero_title', 'Feel the Underground Vibe' ) ); ?></h1>
+    <p><?php echo esc_html( get_theme_mod( 'hero_subtitle', 'Cutting-edge techno & house from the heart of Finland.' ) ); ?></p>
+    <a href="#releases" class="btn"><?php echo esc_html( get_theme_mod( 'hero_button_text', 'Latest Releases' ) ); ?></a>
   </div>
 </section>
 
 <!-- Audio releases -->
 <section class="releases" id="releases">
-  <h2 class="section-title">Featured Audio Releases</h2>
+  <h2 class="section-title"><?php echo esc_html( get_theme_mod( 'release_section_title', 'Featured Audio Releases' ) ); ?></h2>
   <div class="container grid grid-3">
     <?php 
     $has_releases = false;
@@ -82,7 +82,7 @@ get_header(); ?>
 
 <!-- Video releases -->
 <section class="releases" id="videos" style="background:#111;">
-  <h2 class="section-title">Latest YouTube Videos</h2>
+  <h2 class="section-title"><?php echo esc_html( get_theme_mod( 'video_section_title', 'Latest YouTube Videos' ) ); ?></h2>
   <div class="container grid grid-3">
     <?php 
     $has_videos = false;

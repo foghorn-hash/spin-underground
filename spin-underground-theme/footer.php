@@ -1,5 +1,5 @@
 <footer id="contact">
-  <div class="container"><p>© <?php echo date('Y'); ?> Spin Underground Records • Tampere, Finland • <a href="mailto:info@spinunderground.fi" style="color:var(--accent);text-decoration:none;">info@spinunderground.fi</a></p></div>
+  <div class="container"><p>© <?php echo date('Y'); ?> Spin Underground Records • Tampere, Finland • <a href="mailto:info@spinunderground.fi" style="color:var(--accent);text-decoration:none;">info@spinunderground.fi</a> • <a href="<?php echo esc_url( get_privacy_policy_url() ); ?>" style="color:var(--accent);text-decoration:none;">Privacy Policy</a></p></div>
 </footer>
 <button id="scrollToTopBtn" title="Scroll to top">↑</button>
 <script>

@@ -578,6 +578,50 @@ footer {
     text-decoration: none;
 }
 
+/* Page Styles */
+.page-content .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 0;
+}
+
+.page-content article {
+    background: #1a1a1a;
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+}
+
+.page-content .page-body {
+    color: #ddd;
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+.page-content .page-body ul,
+.page-content .page-body ol {
+    margin: 1rem 0 1.5rem 1.5rem;
+    padding-left: 1rem;
+    color: #ddd;
+}
+
+.page-content .page-body ul {
+    list-style: disc outside;
+}
+
+.page-content .page-body ol {
+    list-style: decimal outside;
+}
+
+.page-content .page-body li {
+    margin-bottom: 0.75rem;
+}
+
+.page-content .section-title {
+    margin-bottom: 2rem;
+    color: var(--accent);
+}
+
 .post-categories a:hover,
 .post-tags a:hover {
     text-decoration: underline;
