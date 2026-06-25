@@ -49,3 +49,55 @@ require get_template_directory() . '/inc/front-page-setup.php';
  * Customizer settings
  */
 require get_template_directory() . '/inc/customizer.php';
+
+/**
+ * Custom comment callback to display author name instead of email
+ */
+if ( ! function_exists( 'spinunderground_comment_callback' ) ) {
+	function spinunderground_comment_callback( $comment, $args, $depth ) {
+		$GLOBALS['comment'] = $comment;
+		
+		// Get the user ID from the comment
+		$user_id = $comment->user_id;
+		
+		// Get the display name if user is registered, otherwise use the comment author name
+		if ( $user_id ) {
+			$comment_author = get_the_author_meta( 'display_name', $user_id );
+		} else {
+			$comment_author = get_comment_author();
+		}
+		
+		$comment_url    = get_comment_author_url();
+		$comment_link   = $comment_url ? sprintf( '<a href="%s" target="_blank" rel="noopener">%s</a>', esc_url( $comment_url ), esc_html( $comment_author ) ) : esc_html( $comment_author );
+		?>
+		<li id="comment-<?php comment_ID(); ?>" <?php comment_class( 'comment' ); ?>>
+			<div class="comment-meta">
+				<div class="comment-author">
+					<?php echo get_avatar( $comment, 40 ); ?>
+					<div>
+						<strong><?php echo $comment_link; ?></strong>
+					</div>
+				</div>
+				<div class="comment-metadata">
+					<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
+						<?php printf( esc_html__( '%s ago', 'spinunderground' ), human_time_diff( get_comment_time( 'U' ), current_time( 'timestamp' ) ) ); ?>
+					</a>
+				</div>
+			</div>
+			<div class="comment-content">
+				<?php comment_text(); ?>
+			</div>
+			<div class="comment-reply">
+				<?php
+				comment_reply_link( array_merge( $args, array(
+					'depth'      => $depth,
+					'max_depth'  => $args['max_depth'],
+					'reply_text' => esc_html__( 'Reply', 'spinunderground' ),
+				) ) );
+				?>
+			</div>
+		</li>
+		<?php
+	}
+}
+

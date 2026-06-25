@@ -678,54 +678,57 @@ footer {
 .commentlist>li.comment {
     margin-bottom: 2rem;
     background: #1a1a1a;
-    padding: 2rem;
-    border-radius: 12px;
+    padding: 1.75rem;
+    border-radius: 10px;
 }
 
 .comment-list .children,
 .commentlist .children {
-    margin-top: 2rem;
-    border-left: 2px solid #333;
+    background: #444444;
+    margin-top: 1.5rem;
     margin-left: 1.5rem;
     padding-left: 1.5rem;
+    border-radius: 10px;
 }
 
 .comment-list .children li.comment,
 .commentlist .children li.comment {
-    background: #222;
+    background: #444444;
     margin-bottom: 1rem;
-    padding: 1.5rem;
-    border-radius: 12px;
+    padding: 1.25rem;
+    border-radius: 8px;
 }
 
 .comment-meta {
     display: flex;
     flex-direction: column;
     gap: 5px;
-    margin-bottom: 1.5rem;
-    border-bottom: 1px solid #333;
-    padding-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
 .comment-author {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
     color: var(--light);
-    font-weight: bold;
-    font-size: 1.1rem;
+    font-weight: 700;
+    font-size: 1rem;
 }
 
 .comment-author img.avatar {
     border-radius: 50%;
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     object-fit: cover;
 }
 
 .comment-author a {
-    color: var(--light);
+    color: var(--accent);
     text-decoration: none;
+}
+
+.comment-author a:hover {
+    text-decoration: underline;
 }
 
 .comment-author .says {
@@ -734,11 +737,11 @@ footer {
 
 /* Hide "says:" */
 .comment-metadata {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: #888;
-    margin-left: 60px;
     display: flex;
     gap: 10px;
+    margin-top: 0.5rem;
 }
 
 .comment-metadata a,
@@ -749,118 +752,95 @@ footer {
 
 .comment-metadata a:hover {
     color: var(--accent);
-    text-decoration: underline;
 }
 
 .comment-content {
-    font-size: 1.05rem;
-    line-height: 1.7;
-    color: #eee;
-    margin-bottom: 1.5rem;
-}
-
-.comment-content p {
-    margin-bottom: 1rem;
-}
-
-.comment-content a {
-    color: var(--accent);
-    text-decoration: underline;
-}
-
-.comment-content a:hover {
-    text-decoration: none;
-}
-
-.reply {
+    color: #ddd;
+    line-height: 1.8;
     margin-top: 1rem;
 }
 
-.reply a {
+.comment-content p {
+    margin: 0.75rem 0;
+}
+
+.comment-reply-link,
+.reply {
     display: inline-block;
-    padding: 0.5rem 1.5rem;
-    background: #2a2a2a;
-    color: var(--light);
-    border-radius: 50px;
-    text-decoration: none;
-    font-size: 0.85rem;
-    transition: background 0.3s;
-}
-
-.reply a:hover {
-    background: var(--accent);
-    color: var(--light);
-    text-decoration: none;
-}
-
-.logged-in-as {
-    color: #888;
-    font-size: 0.9rem;
-    margin-bottom: 1.5rem;
-}
-
-.logged-in-as a {
+    margin-top: 1rem;
     color: var(--accent);
     text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
 }
 
-.logged-in-as a:hover {
+.comment-reply-link:hover,
+.reply:hover {
     text-decoration: underline;
 }
 
 .comment-respond {
     margin-top: 3rem;
-    background: #1a1a1a;
     padding: 2rem;
-    border-radius: 12px;
+    background: #1a1a1a;
+    border-radius: 10px;
 }
 
-.comment-form-comment label,
-.comment-form-author label,
-.comment-form-email label,
-.comment-form-url label {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: var(--light);
+.comment-respond h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
 }
 
-.comment-form textarea,
-.comment-form input[type="text"],
-.comment-form input[type="email"],
-.comment-form input[type="url"] {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #333;
-    background: #000;
-    color: var(--light);
-    border-radius: 4px;
-    font-family: inherit;
+.comment-form p {
     margin-bottom: 1rem;
 }
 
-.comment-form textarea:focus,
-.comment-form input:focus {
-    outline: 1px solid var(--accent);
-    border-color: var(--accent);
+.comment-form-comment textarea {
+    width: 100%;
+    padding: 0.75rem;
+    background: #0d0d0d;
+    color: #ddd;
+    border: 1px solid #333;
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    resize: vertical;
+    min-height: 120px;
 }
 
-.form-submit .submit {
+.comment-form-comment textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: #1a1a1a;
+}
+
+.form-submit {
+    margin-top: 1rem;
+}
+
+.form-submit input {
     background: var(--accent);
     color: var(--light);
     padding: 0.75rem 2rem;
     border: none;
-    border-radius: 50px;
+    border-radius: 6px;
     cursor: pointer;
-    font-size: 1rem;
-    transition: transform 0.3s, background 0.3s;
-    font-family: inherit;
+    font-weight: 600;
+    transition: transform 0.3s;
 }
 
-.form-submit .submit:hover {
+.form-submit input:hover {
     transform: scale(1.05);
-    background: #e60052;
 }
 
+.no-comments {
+    text-align: center;
+    color: #888;
+    padding: 2rem;
+    font-style: italic;
+}
+
+/* Artist Listing */
 /* WordPress responsive YouTube embeds */
 .wp-block-embed-youtube,
 .wp-block-embed.is-type-video,
