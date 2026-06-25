@@ -19,21 +19,28 @@
   scrollToTopBtn.onclick = function () {
       window.scrollTo({ top: 0, behavior: "smooth" });
   };
-  const burger=document.getElementById('burger');
-  // There are two overlay elements with id="overlay" in the original HTML.
-  // Using querySelectorAll to handle all overlays if needed, but the original code just uses getElementById.
-  // Let's stick to the original logic, assuming the first overlay is the main one.
-  const overlays=document.querySelectorAll('.overlay');
-  const closeBtns=document.querySelectorAll('.close-btn');
-  
-  function openMenu(){
-    overlays.forEach(overlay => overlay.classList.add('open'));
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+
+  // Toggle mobile nav by toggling the .open class on the existing #navLinks
+  function toggleMenu() {
+    if (!navLinks) return;
+    navLinks.classList.toggle('open');
+    // Optional: toggle a class on the burger for simple animation styling
+    if (burger) burger.classList.toggle('open');
   }
-  function closeMenu(){
-    overlays.forEach(overlay => overlay.classList.remove('open'));
+
+  if (burger) burger.addEventListener('click', toggleMenu);
+
+  // Close the mobile nav when a link is clicked (useful on small screens)
+  if (navLinks) {
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (navLinks.classList.contains('open')) navLinks.classList.remove('open');
+        if (burger) burger.classList.remove('open');
+      });
+    });
   }
-  if(burger) burger.addEventListener('click',openMenu);
-  closeBtns.forEach(btn => btn.addEventListener('click',closeMenu));
 </script>
 <?php wp_footer(); ?>
 </body>

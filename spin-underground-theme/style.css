@@ -354,17 +354,33 @@ footer {
     .nav-links {
         position: absolute;
         top: 70px;
-        right: 0;
-        background: #000;
+        right: 12px;
+        background: rgba(0, 0, 0, 0.92);
+        backdrop-filter: blur(4px);
         flex-direction: column;
-        width: 200px;
+        width: 240px;
         transform: translateX(100%);
-        transition: transform .3s;
-        padding: 1rem 0
+        opacity: 0;
+        pointer-events: none;
+        transition: transform .3s, box-shadow .25s, opacity .25s ease;
+        padding: 1rem 0;
+        text-align: left;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+        transition: transform .3s, box-shadow .25s;
     }
 
     .nav-links.open {
-        transform: translateX(0)
+        transform: translateX(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: .75rem 1.25rem;
+        font-size: 1.05rem;
     }
 
     .burger {
