@@ -18,11 +18,32 @@ Text Domain: spinunderground
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
-    scroll-behavior: smooth
+    scroll-behavior: smooth;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
     color: var(--accent);
+}
+
+h1, h2, h3, h4, h5, h6, p, a, span, li {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+img, video, iframe, embed, object, table, pre, code {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.adsbygoogle,
+ins.adsbygoogle {
+    max-width: 100% !important;
+    overflow: hidden !important;
 }
 
 p {
@@ -35,7 +56,9 @@ body {
     line-height: 1.6;
     display: flex;
     flex-direction: column;
-    min-height: 100vh
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
 }
 
 header {
@@ -363,25 +386,28 @@ footer {
         position: absolute;
         top: 70px;
         right: 12px;
-        background: rgba(0, 0, 0, 0.92);
-        backdrop-filter: blur(4px);
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(8px);
         flex-direction: column;
         width: 240px;
-        transform: translateX(100%);
+        max-width: calc(100vw - 24px);
+        transform: translateY(-10px) scale(0.95);
         opacity: 0;
+        visibility: hidden;
         pointer-events: none;
-        transition: transform .3s, box-shadow .25s, opacity .25s ease;
+        transition: transform .25s ease, opacity .25s ease, visibility .25s ease, box-shadow .25s ease;
         padding: 1rem 0;
         text-align: left;
         border-radius: 10px;
         overflow: hidden;
         box-shadow: 0 12px 30px rgba(0,0,0,0.6);
-        transition: transform .3s, box-shadow .25s;
+        border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .nav-links.open {
-        transform: translateX(0);
+        transform: translateY(0) scale(1);
         opacity: 1;
+        visibility: visible;
         pointer-events: auto;
     }
 
@@ -392,7 +418,34 @@ footer {
     }
 
     .burger {
-        display: flex
+        display: flex;
+    }
+
+    /* Mobile padding & spacing adjustments */
+    .single-post,
+    .blog-listing,
+    .artist-listing,
+    .single-artist-container,
+    .page-content .container {
+        padding: 2rem 0;
+    }
+
+    .single-post article,
+    .page-content article,
+    .artist-bio,
+    .link-group,
+    .comment-respond {
+        padding: 1.5rem 1rem;
+    }
+
+    .post-title {
+        font-size: 1.8rem;
+    }
+
+    .comment-list .children,
+    .commentlist .children {
+        margin-left: 0.5rem;
+        padding-left: 0.5rem;
     }
 }
 
@@ -566,6 +619,53 @@ footer {
     margin-bottom: 0.5rem;
 }
 
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+}
+
+.post-content figure {
+    margin-bottom: 2rem;
+    max-width: 100%;
+}
+
+.post-content figure img {
+    margin-bottom: 0;
+}
+
+.post-content figcaption {
+    font-size: 0.85rem;
+    color: #888;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.post-content .wp-block-image,
+.post-content .wp-block-gallery {
+    margin-bottom: 2rem;
+}
+
+.post-content .aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.post-content .alignright {
+    float: right;
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.post-content .alignleft {
+    float: left;
+    margin-right: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
 .post-footer {
     background: transparent !important;
     padding-top: 2rem;
@@ -623,6 +723,35 @@ footer {
 
 .page-content .page-body li {
     margin-bottom: 0.75rem;
+}
+
+.page-content .page-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+}
+
+.page-content .page-body figure {
+    margin-bottom: 2rem;
+    max-width: 100%;
+}
+
+.page-content .page-body figure img {
+    margin-bottom: 0;
+}
+
+.page-content .page-body figcaption {
+    font-size: 0.85rem;
+    color: #888;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.page-content .page-body .wp-block-image,
+.page-content .page-body .wp-block-gallery {
+    margin-bottom: 2rem;
 }
 
 .page-content .section-title {
@@ -847,6 +976,7 @@ footer {
 .wp-block-embed {
     width: 100%;
     max-width: 100%;
+    margin-bottom: 2rem;
 }
 
 .wp-block-embed__wrapper,
