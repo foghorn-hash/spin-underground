@@ -29,12 +29,20 @@
         ?>
       </div>
       <ul class="nav-links" id="navLinks">
-        <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>#releases">Audio</a></li>
+        <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>#releases"><i class="bi bi-disc"></i> Releases</a></li>
         <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>#videos">Videos</a></li>
         <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>#about">About</a></li>
         <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>#contact">Contact</a></li>
         <li><a href="<?php echo esc_url( get_post_type_archive_link( 'artist' ) ); ?>">Artists</a></li>
         <li><a href="<?php echo esc_url( get_permalink( get_option( 'page_for_posts' ) ) ); ?>">Blog</a></li>
+        <?php if ( class_exists( 'WooCommerce' ) ) : ?>
+        <li class="nav-cart-item">
+          <a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="nav-cart-link" aria-label="<?php esc_attr_e( 'Shopping Cart', 'spinunderground' ); ?>">
+            <i class="bi bi-bag"></i>
+            <span class="cart-count"><?php echo WC()->cart ? esc_html( WC()->cart->get_cart_contents_count() ) : '0'; ?></span>
+          </a>
+        </li>
+        <?php endif; ?>
       </ul>
       <div class="burger" id="burger"><span></span><span></span><span></span></div>
     </nav>

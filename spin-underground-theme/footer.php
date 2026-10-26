@@ -32,13 +32,21 @@
 
   if (burger) burger.addEventListener('click', toggleMenu);
 
+  // Close mobile navigation overlay and drawer
+  function closeMenu() {
+    const overlay = document.getElementById('overlay');
+    if (overlay) overlay.classList.remove('open');
+    if (navLinks && navLinks.classList.contains('open')) navLinks.classList.remove('open');
+    if (burger && burger.classList.contains('open')) burger.classList.remove('open');
+  }
+
+  const closeBtn = document.getElementById('closeBtn');
+  if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+
   // Close the mobile nav when a link is clicked (useful on small screens)
   if (navLinks) {
     navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        if (navLinks.classList.contains('open')) navLinks.classList.remove('open');
-        if (burger) burger.classList.remove('open');
-      });
+      link.addEventListener('click', closeMenu);
     });
   }
 </script>

@@ -70,59 +70,99 @@ header {
 }
 
 .container {
-    width: 90%;
-    max-width: 1200px;
+    width: 92%;
+    max-width: 1240px;
     margin: 0 auto;
-    padding: 1rem 0
+    padding: 0.75rem 0;
 }
 
 nav {
     display: flex;
     justify-content: space-between;
-    align-items: center
+    align-items: center;
+    min-height: 65px;
 }
 
 .logo {
+    display: flex;
+    align-items: center;
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--accent);
     text-transform: uppercase;
-    letter-spacing: 2px
+    letter-spacing: 2px;
+    line-height: 1;
 }
 
-.logo img {
-    width: 50px;
-    height: 50px;
+.logo a,
+.logo .custom-logo-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    line-height: 1;
+}
+
+.logo img,
+.logo .custom-logo {
+    height: 62px;
+    max-height: 68px;
+    width: auto;
+    max-width: 280px;
+    object-fit: contain;
+    display: block;
     vertical-align: middle;
-    margin-right: 10px
+    transition: transform 0.25s ease;
+}
+
+.logo a:hover img,
+.logo .custom-logo-link:hover .custom-logo {
+    transform: scale(1.03);
 }
 
 .nav-links {
     display: flex;
-    gap: 2rem;
-    list-style: none
+    align-items: center;
+    gap: 1.4rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    display: flex;
+    align-items: center;
+    height: 100%;
 }
 
 .nav-links a {
     color: var(--light);
     text-decoration: none;
-    position: relative
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 42px;
+    padding: 0 1rem;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1;
+    box-sizing: border-box;
+    transition: all 0.25s ease;
 }
 
-.nav-links a::after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -4px;
-    left: 0;
-    background: var(--accent);
-    transition: width .3s
+.nav-links a i {
+    font-size: 1.05rem;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
 }
 
-.nav-links a:hover::after,
-.nav-links a:focus::after {
-    width: 100%
+.nav-links a:hover,
+.nav-links a:focus {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
 }
 
 /* Overlay menu */
@@ -178,41 +218,67 @@ nav {
 
 /* Responsive video section */
 .video-section {
-    padding: 4rem 0;
-    background: #0d0d0d
+    padding: 3rem 0;
+    background: #0d0d0d;
+    width: 100%;
 }
 
 .video-section h2 {
     text-align: center;
     font-size: 2rem;
-    margin-bottom: 2rem;
-    color: var(--accent)
+    margin-bottom: 2.5rem;
+    color: var(--accent);
 }
 
 .video-container-wrapper {
-    width: 90%;
+    width: 95%;
     max-width: 1200px;
-    margin: 0 auto
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+    align-items: center;
+    box-sizing: border-box;
 }
 
+.video-container-wrapper .responsive-video,
 .responsive-video {
     position: relative;
-    width: 100%;
-    padding-bottom: 56.25%;
-    height: 0;
+    width: 100% !important;
+    max-width: 100% !important;
+    aspect-ratio: 16 / 9 !important;
+    height: auto;
+    padding-bottom: 0;
     overflow: hidden;
-    border-radius: 12px;
-    margin-bottom: 2rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, .5)
+    border-radius: 16px;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #000;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
+.video-container-wrapper .responsive-video:hover,
+.responsive-video:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 22px 48px rgba(0, 0, 0, 0.9), 0 0 30px rgba(255, 0, 102, 0.25);
+    border-color: rgba(255, 0, 102, 0.45);
+}
+
+.video-container-wrapper .responsive-video iframe,
 .responsive-video iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    display: block !important;
 }
 
 .hero {
@@ -341,15 +407,18 @@ nav {
 .video-wrapper {
     position: relative;
     width: 100%;
-    padding-top: 56.25%
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
 }
 
 .video-wrapper iframe {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%
+    width: 100% !important;
+    height: 100% !important;
+    aspect-ratio: 16 / 9 !important;
+    border: none;
 }
 
 .video-info {
@@ -412,9 +481,21 @@ footer {
     }
 
     .nav-links a {
-        display: block;
+        display: flex;
+        align-items: center;
+        height: auto;
         padding: .75rem 1.25rem;
         font-size: 1.05rem;
+        border-radius: 0;
+    }
+
+    .nav-links .nav-cart-item {
+        padding: 0.5rem 1.25rem;
+    }
+
+    .nav-links .nav-cart-link {
+        height: 38px;
+        width: 100%;
     }
 
     .burger {
@@ -1189,3 +1270,1677 @@ iframe[src*="youtu.be"] {
 .link-beatport { background: #01FF95; color: #000; }
 .link-traxsource { background: #22a0ce; }
 .link-juno { background: #1b1b1b; border: 1px solid #333; }
+
+/* -------------------------------------------------------------
+   Header Cart Link & Badge
+-------------------------------------------------------------- */
+.nav-cart-item {
+    display: flex;
+    align-items: center;
+}
+.nav-cart-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 42px;
+    padding: 0 1.15rem;
+    border-radius: 50px;
+    background: rgba(255, 0, 91, 0.14);
+    border: 1px solid rgba(255, 0, 91, 0.45);
+    color: #fff !important;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+.nav-cart-link:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 0 18px rgba(255, 0, 91, 0.6);
+    transform: translateY(-2px);
+}
+.nav-cart-link i {
+    font-size: 1.1rem;
+    color: var(--accent);
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+.nav-cart-link:hover i {
+    color: #fff;
+}
+.cart-count {
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 50px;
+    min-width: 20px;
+    text-align: center;
+    line-height: 1.3;
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.cart-count.bump {
+    transform: scale(1.4);
+}
+
+/* -------------------------------------------------------------
+   WooCommerce Record Label Releases Storefront (Front-Page)
+-------------------------------------------------------------- */
+.releases-store-section {
+    padding: 6rem 0 7rem;
+    background: radial-gradient(circle at 50% 0%, rgba(255, 0, 91, 0.09) 0%, rgba(13, 13, 13, 0) 70%), #0d0d0d;
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Section Header */
+.store-section-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+}
+.store-badge-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 0, 91, 0.12);
+    border: 1px solid rgba(255, 0, 91, 0.35);
+    color: var(--accent);
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    letter-spacing: 2px;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 0 15px rgba(255, 0, 91, 0.15);
+}
+.store-title {
+    font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 1rem;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+.store-subtitle {
+    font-size: clamp(1rem, 1.8vw, 1.15rem);
+    color: #a0a0a0;
+    line-height: 1.6;
+    margin: 0 auto;
+}
+
+/* Format Filter Bar */
+.store-filter-bar {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 3.5rem;
+}
+.store-filter-btn {
+    background: #141414;
+    border: 1px solid #2a2a2a;
+    color: #aaa;
+    padding: 0.65rem 1.4rem;
+    border-radius: 50px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.store-filter-btn:hover {
+    color: #fff;
+    border-color: #555;
+    background: #1c1c1c;
+    transform: translateY(-2px);
+}
+.store-filter-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    box-shadow: 0 0 20px rgba(255, 0, 91, 0.45);
+    transform: translateY(-2px);
+}
+
+/* Releases Product Grid */
+.store-releases-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2.5rem;
+}
+@media (min-width: 640px) {
+    .store-releases-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (min-width: 1024px) {
+    .store-releases-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem 2.2rem;
+    }
+}
+
+/* Single Release Card */
+.release-card {
+    background: #141414;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                box-shadow 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+                border-color 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+                opacity 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+.release-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 0, 91, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(255, 0, 91, 0.2);
+}
+.release-card.playing {
+    border-color: var(--accent);
+    box-shadow: 0 0 30px rgba(255, 0, 91, 0.35);
+}
+
+/* Vinyl Sleeve & Slide-out Grooved Disc */
+.sleeve-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: #090909;
+    overflow: hidden;
+    perspective: 1000px;
+}
+
+/* The realistic vinyl record hidden inside the sleeve */
+.vinyl-disc-layer {
+    position: absolute;
+    right: 5%;
+    top: 5%;
+    width: 90%;
+    height: 90%;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateX(0) rotate(0deg);
+    transition: transform 0.55s cubic-bezier(0.25, 1, 0.5, 1), 
+                opacity 0.35s ease;
+}
+.release-card:hover .vinyl-disc-layer,
+.release-card.playing .vinyl-disc-layer {
+    opacity: 1;
+    transform: translateX(34%) rotate(85deg);
+}
+.vinyl-disc-img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    filter: drop-shadow(-8px 6px 16px rgba(0, 0, 0, 0.95));
+}
+
+/* Front Cover of Jacket */
+.sleeve-cover {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #111;
+}
+.cover-art {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+}
+.release-card:hover .cover-art {
+    transform: scale(1.05);
+}
+
+/* Subtle vinyl sheen / reflection overlay */
+.sleeve-sheen {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 45%, rgba(0, 0, 0, 0.4) 100%);
+    pointer-events: none;
+    z-index: 3;
+}
+
+/* Card Badges */
+.sleeve-badges {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    z-index: 4;
+}
+.format-badge {
+    background: rgba(10, 10, 10, 0.88);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 6px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+.format-vinyl {
+    border-color: rgba(255, 0, 91, 0.65);
+    color: #ff3377;
+}
+.format-wav {
+    border-color: rgba(0, 229, 255, 0.65);
+    color: #00e5ff;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+}
+.format-mp3 {
+    border-color: rgba(0, 255, 136, 0.65);
+    color: #00ff88;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
+}
+.format-flac {
+    border-color: rgba(192, 132, 252, 0.65);
+    color: #c084fc;
+    box-shadow: 0 0 10px rgba(192, 132, 252, 0.2);
+}
+.format-bundle {
+    border-color: rgba(255, 187, 0, 0.65);
+    color: #ffbb00;
+}
+.format-merch {
+    border-color: rgba(255, 255, 255, 0.35);
+    color: #eee;
+}
+.sale-badge {
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 900;
+    padding: 4px 10px;
+    border-radius: 6px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 0 12px rgba(255, 0, 91, 0.6);
+    animation: pulseGlow 2s infinite ease-in-out;
+}
+@keyframes pulseGlow {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.88; transform: scale(0.97); }
+}
+
+.catalog-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 4;
+    background: rgba(0, 0, 0, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #bbb;
+    font-family: monospace, sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+}
+
+/* Play Preview Floating Button */
+.preview-play-btn {
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+    z-index: 5;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    box-shadow: 0 6px 18px rgba(255, 0, 91, 0.5);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                background 0.3s ease, 
+                box-shadow 0.3s ease;
+}
+.preview-play-btn:hover {
+    transform: scale(1.15);
+    background: #ff2977;
+    box-shadow: 0 0 24px rgba(255, 0, 91, 0.8);
+}
+.preview-play-btn .pause-icon,
+.preview-play-btn .sound-wave-bars {
+    display: none;
+}
+.preview-play-btn.active {
+    background: #fff;
+    color: var(--accent);
+}
+.preview-play-btn.active .play-icon {
+    display: none;
+}
+.preview-play-btn.active .pause-icon {
+    display: block;
+}
+
+/* Micro sound wave bars */
+.sound-wave-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 14px;
+}
+.sound-wave-bars span {
+    width: 2.5px;
+    background: var(--accent);
+    border-radius: 2px;
+    animation: soundWave 0.8s infinite ease-in-out alternate;
+}
+.sound-wave-bars span:nth-child(1) { height: 6px; animation-delay: 0.1s; }
+.sound-wave-bars span:nth-child(2) { height: 14px; animation-delay: 0.3s; }
+.sound-wave-bars span:nth-child(3) { height: 10px; animation-delay: 0.2s; }
+.sound-wave-bars span:nth-child(4) { height: 4px; animation-delay: 0.4s; }
+
+@keyframes soundWave {
+    0% { height: 3px; }
+    100% { height: 14px; }
+}
+
+/* Release Details Area */
+.release-details {
+    padding: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.release-header-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.4rem;
+}
+.release-artist {
+    color: var(--accent);
+    font-weight: 700;
+}
+.release-catalog-text {
+    color: #666;
+    font-family: monospace, sans-serif;
+    font-weight: 600;
+}
+.release-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    line-height: 1.35;
+    margin: 0 0 0.4rem;
+}
+.release-title a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.release-title a:hover {
+    color: var(--accent);
+}
+.release-genre {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 1.3rem;
+}
+
+/* Actions Row & Price */
+.release-actions-row {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 1rem;
+}
+.release-price {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #fff;
+}
+.release-price del {
+    color: #666;
+    font-size: 0.9rem;
+    margin-right: 6px;
+    font-weight: 400;
+}
+.release-price ins {
+    color: #00ff88;
+    text-decoration: none;
+}
+.release-buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Store Buy / Add to Cart Button */
+.btn-store-cart {
+    background: var(--accent);
+    color: #fff !important;
+    text-decoration: none;
+    padding: 0.55rem 1.15rem;
+    border-radius: 50px;
+    font-size: 0.86rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(255, 0, 91, 0.3);
+}
+.btn-store-cart:hover {
+    background: #ff2977;
+    box-shadow: 0 0 16px rgba(255, 0, 91, 0.6);
+    transform: translateY(-2px);
+}
+.btn-store-cart.added-success {
+    background: #00cc66 !important;
+    box-shadow: 0 0 16px rgba(0, 204, 102, 0.6) !important;
+}
+
+.btn-store-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #1c1c1c;
+    border: 1px solid #333;
+    color: #aaa !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.25s ease;
+}
+.btn-store-icon:hover {
+    background: #2a2a2a;
+    border-color: #555;
+    color: #fff !important;
+}
+
+/* -------------------------------------------------------------
+   Store Guarantees & Perks Banner
+-------------------------------------------------------------- */
+.store-perks-banner {
+    margin-top: 4.5rem;
+    padding: 2.2rem 2.5rem;
+    background: linear-gradient(135deg, #141414 0%, #1a1a1a 100%);
+    border-radius: 18px;
+    border: 1px solid rgba(255, 0, 91, 0.18);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.8rem;
+}
+@media (min-width: 600px) {
+    .store-perks-banner {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (min-width: 1024px) {
+    .store-perks-banner {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+.perk-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+.perk-icon {
+    font-size: 1.8rem;
+    color: var(--accent);
+    flex-shrink: 0;
+    line-height: 1;
+    margin-top: 2px;
+}
+.perk-text h4 {
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.25rem;
+}
+.perk-text p {
+    font-size: 0.82rem;
+    color: #888;
+    line-height: 1.45;
+    margin: 0;
+}
+
+/* Store Footer CTA */
+.store-footer-cta {
+    text-align: center;
+    margin-top: 3.5rem;
+}
+.btn-store-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    border: 2px solid var(--accent);
+    color: #fff !important;
+    padding: 0.85rem 2.4rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-store-primary:hover {
+    background: var(--accent);
+    color: #fff !important;
+    box-shadow: 0 0 25px rgba(255, 0, 91, 0.6);
+    transform: translateY(-3px);
+}
+
+/* -------------------------------------------------------------
+   Sticky Bottom Audio Preview Player Dock
+-------------------------------------------------------------- */
+.preview-player-dock {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background: rgba(14, 14, 14, 0.94);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 2px solid var(--accent);
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.85);
+    transform: translateY(115%);
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.preview-player-dock.visible {
+    transform: translateY(0);
+}
+.dock-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    gap: 1.5rem;
+}
+
+/* Dock Info */
+.dock-track-info {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 220px;
+}
+.dock-disc-thumb {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    position: relative;
+}
+.dock-spinning-disc {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.dock-spinning-disc.spinning {
+    animation: spinVinyl 3.5s linear infinite;
+}
+@keyframes spinVinyl {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.dock-text {
+    display: flex;
+    flex-direction: column;
+}
+.dock-label {
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+.live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: livePulse 1.2s infinite alternate;
+}
+@keyframes livePulse {
+    0% { transform: scale(0.8); opacity: 0.6; }
+    100% { transform: scale(1.3); opacity: 1; }
+}
+.dock-title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #fff;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+.dock-artist {
+    font-size: 0.8rem;
+    color: #888;
+    margin: 0;
+}
+
+/* Dock Controls */
+.dock-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-grow: 1;
+    justify-content: center;
+}
+.dock-btn-play {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    box-shadow: 0 0 15px rgba(255, 0, 91, 0.4);
+    transition: transform 0.2s, background 0.2s;
+}
+.dock-btn-play:hover {
+    transform: scale(1.1);
+    background: #ff2977;
+}
+
+.dock-wave-visualizer {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    height: 24px;
+    opacity: 0.3;
+    transition: opacity 0.3s;
+}
+.dock-wave-visualizer.active {
+    opacity: 1;
+}
+.dock-wave-visualizer span {
+    width: 3px;
+    background: var(--accent);
+    border-radius: 3px;
+    height: 4px;
+    transition: height 0.2s;
+}
+.dock-wave-visualizer.active span {
+    animation: dockWave 1s infinite alternate ease-in-out;
+}
+.dock-wave-visualizer.active span:nth-child(2n) { animation-duration: 0.6s; }
+.dock-wave-visualizer.active span:nth-child(3n) { animation-duration: 0.8s; }
+.dock-wave-visualizer.active span:nth-child(4n) { animation-duration: 1.1s; }
+
+@keyframes dockWave {
+    0% { height: 4px; }
+    50% { height: 22px; }
+    100% { height: 8px; }
+}
+
+.dock-time {
+    font-family: monospace, sans-serif;
+    font-size: 0.8rem;
+    color: #888;
+    min-width: 80px;
+}
+
+/* Dock Actions */
+.dock-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+.dock-btn-buy {
+    background: #fff;
+    color: #0d0d0d !important;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.5rem 1.1rem;
+    border-radius: 50px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.25s ease;
+}
+.dock-btn-buy:hover {
+    background: var(--accent);
+    color: #fff !important;
+    box-shadow: 0 0 16px rgba(255, 0, 91, 0.6);
+}
+.dock-btn-close {
+    background: transparent;
+    border: none;
+    color: #888;
+    font-size: 1.8rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0 6px;
+    transition: color 0.2s;
+}
+.dock-btn-close:hover {
+    color: var(--accent);
+}
+
+@media (max-width: 768px) {
+    .dock-wave-visualizer,
+    .dock-time {
+        display: none;
+    }
+    .dock-title {
+        max-width: 140px;
+    }
+}
+
+/* -------------------------------------------------------------
+   General WooCommerce Dark Theme Styling
+-------------------------------------------------------------- */
+.woocommerce-main-content,
+.woocommerce-page-wrapper {
+    padding: 2.5rem 0 6rem;
+    background: #0d0d0d;
+}
+
+/* Constrained Container - Not overly wide */
+.woocommerce-container,
+.woocommerce-main-content .container,
+.woocommerce-page-wrapper .container {
+    width: 90% !important;
+    max-width: 1050px !important;
+    margin: 0 auto !important;
+    padding: 1.5rem 0 4rem !important;
+}
+
+/* Breadcrumb */
+.woocommerce .woocommerce-breadcrumb {
+    margin-bottom: 2rem;
+    color: #777;
+    font-size: 0.88rem;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.woocommerce .woocommerce-breadcrumb a {
+    color: #bbb;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.woocommerce .woocommerce-breadcrumb a:hover {
+    color: var(--accent);
+}
+
+/* -------------------------------------------------------------
+   Single Product Layout & Presentation (Not Overly Wide)
+-------------------------------------------------------------- */
+.woocommerce div.product {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 3rem !important;
+    margin-bottom: 4.5rem !important;
+    max-width: 100% !important;
+}
+@media (min-width: 860px) {
+    .woocommerce div.product {
+        grid-template-columns: 380px 1fr !important;
+        align-items: start !important;
+        gap: 3rem !important;
+    }
+}
+@media (min-width: 1050px) {
+    .woocommerce div.product {
+        grid-template-columns: 420px 1fr !important;
+        gap: 3.5rem !important;
+    }
+}
+
+/* Neutralize legacy WooCommerce floats */
+.woocommerce #content div.product div.images,
+.woocommerce div.product div.images,
+.woocommerce-page #content div.product div.images,
+.woocommerce-page div.product div.images,
+.woocommerce #content div.product div.summary,
+.woocommerce div.product div.summary,
+.woocommerce-page #content div.product div.summary,
+.woocommerce-page div.product div.summary {
+    float: none !important;
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+/* Single Product Gallery / Cover Art (Left Column) */
+.woocommerce div.product div.images {
+    position: relative;
+    max-width: 420px !important;
+    width: 100% !important;
+    margin: 0 !important;
+}
+.woocommerce div.product div.images .woocommerce-product-gallery__wrapper {
+    border-radius: 18px;
+    overflow: hidden;
+    background: #111;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 0, 91, 0.15);
+    margin: 0 !important;
+    position: relative;
+}
+.woocommerce div.product div.images img {
+    border-radius: 18px;
+    display: block;
+    width: 100%;
+    max-width: 420px !important;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+}
+
+/* Lightbox Trigger Icon (Magnifying glass) */
+.woocommerce div.product div.images .woocommerce-product-gallery__trigger {
+    position: absolute !important;
+    top: 16px !important;
+    right: 16px !important;
+    z-index: 10 !important;
+    background: rgba(14, 14, 14, 0.88) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: var(--accent) !important;
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7) !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.woocommerce div.product div.images .woocommerce-product-gallery__trigger:hover {
+    background: var(--accent) !important;
+    color: #fff !important;
+    transform: scale(1.1) !important;
+    box-shadow: 0 0 22px rgba(255, 0, 91, 0.75) !important;
+}
+.woocommerce div.product div.images .woocommerce-product-gallery__trigger::before {
+    border-color: currentColor !important;
+}
+.woocommerce div.product div.images .woocommerce-product-gallery__trigger::after {
+    background: currentColor !important;
+}
+
+/* Thumbnails */
+.woocommerce div.product div.images .flex-control-thumbs {
+    display: flex !important;
+    gap: 12px !important;
+    margin-top: 14px !important;
+    padding: 0 !important;
+    list-style: none !important;
+}
+.woocommerce div.product div.images .flex-control-thumbs li {
+    width: 75px !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    border: 2px solid transparent !important;
+    transition: all 0.25s ease !important;
+    cursor: pointer !important;
+}
+.woocommerce div.product div.images .flex-control-thumbs li img {
+    border-radius: 10px !important;
+    aspect-ratio: 1 / 1 !important;
+}
+.woocommerce div.product div.images .flex-control-thumbs li img.flex-active,
+.woocommerce div.product div.images .flex-control-thumbs li:hover {
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 15px rgba(255, 0, 91, 0.5) !important;
+}
+
+/* Single Product Summary (Right Column) */
+.woocommerce div.product div.summary {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Top Meta Badges (Format + Catalog + Artist) */
+.single-product-top-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 0.9rem;
+}
+.catalog-badge-inline {
+    background: rgba(0, 0, 0, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #00e5ff;
+    font-family: monospace, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 6px;
+    letter-spacing: 1px;
+}
+.artist-badge-inline {
+    color: var(--accent);
+    font-weight: 800;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Product Title */
+.woocommerce div.product .product_title {
+    color: #fff !important;
+    font-size: clamp(2.2rem, 3.8vw, 3.2rem) !important;
+    font-weight: 900 !important;
+    letter-spacing: -0.5px !important;
+    line-height: 1.15 !important;
+    margin: 0.2rem 0 1rem 0 !important;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Price */
+.woocommerce div.product p.price,
+.woocommerce div.product span.price {
+    color: #fff !important;
+    font-size: 2.2rem !important;
+    font-weight: 900 !important;
+    display: flex !important;
+    align-items: baseline !important;
+    gap: 14px !important;
+    margin: 0 0 1.8rem 0 !important;
+    padding-bottom: 1.4rem !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+.woocommerce div.product p.price .woocommerce-Price-amount {
+    color: #fff;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+.woocommerce div.product p.price ins,
+.woocommerce div.product span.price ins {
+    color: #00ff88 !important;
+    text-decoration: none !important;
+    text-shadow: 0 0 20px rgba(0, 255, 136, 0.4) !important;
+}
+.woocommerce div.product p.price del,
+.woocommerce div.product span.price del {
+    color: #666 !important;
+    font-size: 1.3rem !important;
+    font-weight: 400 !important;
+}
+
+/* Short Description */
+.woocommerce-product-details__short-description {
+    color: #ccc !important;
+    font-size: 1.05rem !important;
+    line-height: 1.8 !important;
+    margin-bottom: 1.8rem !important;
+}
+.woocommerce-product-details__short-description p {
+    margin-bottom: 1.1rem !important;
+}
+
+/* Responsive 16:9 Video Sizing for WooCommerce Product Pages (Strictly Video Embeds Only) */
+.woocommerce div.product .woocommerce-product-details__short-description iframe[src*="youtube.com"],
+.woocommerce div.product .woocommerce-product-details__short-description iframe[src*="youtu.be"],
+.woocommerce div.product .woocommerce-product-details__short-description iframe[src*="vimeo.com"],
+.woocommerce div.product .woocommerce-Tabs-panel iframe[src*="youtube.com"],
+.woocommerce div.product .woocommerce-Tabs-panel iframe[src*="youtu.be"],
+.woocommerce div.product .woocommerce-Tabs-panel iframe[src*="vimeo.com"],
+.woocommerce div.product .wp-block-embed iframe,
+.woocommerce div.product .wp-block-embed__wrapper iframe {
+    width: 100% !important;
+    max-width: 480px !important;
+    aspect-ratio: 16 / 9 !important;
+    height: auto !important;
+    border-radius: 14px !important;
+    overflow: hidden !important;
+    display: block !important;
+    margin: 1.4rem 0 !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.75) !important;
+}
+
+/* In wide tab panels allow slightly wider up to 600px */
+.woocommerce div.product .woocommerce-Tabs-panel iframe[src*="youtube.com"],
+.woocommerce div.product .woocommerce-Tabs-panel iframe[src*="youtu.be"],
+.woocommerce div.product .woocommerce-Tabs-panel iframe[src*="vimeo.com"],
+.woocommerce div.product .woocommerce-Tabs-panel .wp-block-embed iframe {
+    max-width: 600px !important;
+}
+
+.woocommerce div.product .wp-block-embed__wrapper {
+    position: relative !important;
+    max-width: 480px !important;
+}
+
+/* Ensure payment gateways (Stripe, Google Pay, Apple Pay, PayPal) iframes & elements are never distorted */
+.wc-stripe-payment-request-wrapper iframe,
+#payment-request-button iframe,
+.payment-request-button iframe,
+.paypal-buttons iframe,
+[id*="payment-request"] iframe,
+iframe[name*="stripe"],
+iframe[src*="stripe.com"],
+iframe[src*="paypal.com"],
+iframe[src*="google.com"] {
+    aspect-ratio: auto !important;
+    max-width: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    background: transparent !important;
+}
+
+/* Add to Cart Form & Quantity Controls */
+.woocommerce div.product form.cart {
+    display: flex !important;
+    align-items: center !important;
+    gap: 1.2rem !important;
+    margin: 2rem 0 !important;
+    padding: 1.5rem !important;
+    background: #141414 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6) !important;
+    flex-wrap: wrap !important;
+}
+.woocommerce div.product form.cart .quantity {
+    margin: 0 !important;
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+}
+.woocommerce div.product form.cart .quantity .qty {
+    background: #1e1e1e !important;
+    border: 1px solid #383838 !important;
+    color: #fff !important;
+    font-size: 1.2rem !important;
+    font-weight: 800 !important;
+    height: 52px !important;
+    width: 80px !important;
+    border-radius: 50px !important;
+    text-align: center !important;
+    padding: 0 !important;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.5) !important;
+    transition: all 0.25s ease !important;
+}
+.woocommerce div.product form.cart .quantity .qty:focus {
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 16px rgba(255, 0, 91, 0.5) !important;
+    outline: none !important;
+}
+.woocommerce div.product form.cart .single_add_to_cart_button {
+    background: var(--accent) !important;
+    color: #fff !important;
+    height: 52px !important;
+    padding: 0 2.8rem !important;
+    font-size: 1.05rem !important;
+    font-weight: 800 !important;
+    border: none !important;
+    border-radius: 50px !important;
+    cursor: pointer !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    box-shadow: 0 6px 20px rgba(255, 0, 91, 0.45) !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.woocommerce div.product form.cart .single_add_to_cart_button:hover {
+    background: #ff2977 !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 0 30px rgba(255, 0, 91, 0.75) !important;
+}
+
+/* Payment Request / PayPal / Google Pay Buttons */
+.woocommerce div.product .wc-stripe-payment-request-wrapper,
+.woocommerce div.product #payment-request-button,
+.woocommerce div.product .paypal-buttons,
+.woocommerce div.product [id*="payment-request"] {
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    margin-bottom: 0.8rem !important;
+    max-width: 480px !important;
+}
+
+/* Product Metadata Card */
+.woocommerce div.product .product_meta {
+    background: #111 !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    border-radius: 14px !important;
+    padding: 1.4rem 1.6rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.8rem !important;
+    margin-top: 1.8rem !important;
+    font-size: 0.92rem !important;
+    color: #888 !important;
+}
+.woocommerce div.product .product_meta > span {
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    color: #aaa !important;
+    font-weight: 600 !important;
+}
+.woocommerce div.product .product_meta .sku {
+    color: #00e5ff !important;
+    font-family: monospace, sans-serif !important;
+    font-weight: 800 !important;
+    font-size: 0.95rem !important;
+    letter-spacing: 1px !important;
+    background: rgba(0, 229, 255, 0.08) !important;
+    border: 1px solid rgba(0, 229, 255, 0.25) !important;
+    padding: 3px 10px !important;
+    border-radius: 6px !important;
+}
+.woocommerce div.product .product_meta a {
+    color: #fff !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    font-size: 0.82rem !important;
+    background: #1c1c1c !important;
+    border: 1px solid #333 !important;
+    padding: 4px 12px !important;
+    border-radius: 50px !important;
+    transition: all 0.2s ease !important;
+}
+.woocommerce div.product .product_meta a:hover {
+    background: var(--accent) !important;
+    border-color: var(--accent) !important;
+    color: #fff !important;
+    box-shadow: 0 0 12px rgba(255, 0, 91, 0.5) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* -------------------------------------------------------------
+   Product Tabs (Description & Reviews)
+-------------------------------------------------------------- */
+.woocommerce div.product .woocommerce-tabs {
+    grid-column: 1 / -1 !important;
+    margin-top: 4.5rem !important;
+    padding-top: 2.5rem !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs {
+    display: flex !important;
+    gap: 0.85rem !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 0 2rem 0 !important;
+    background: transparent !important;
+    overflow: visible !important;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs::before,
+.woocommerce div.product .woocommerce-tabs ul.tabs::after {
+    display: none !important;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li {
+    background: #161616 !important;
+    border: 1px solid #2a2a2a !important;
+    border-radius: 50px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    box-shadow: none !important;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li::before,
+.woocommerce div.product .woocommerce-tabs ul.tabs li::after {
+    display: none !important;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li a {
+    display: inline-block !important;
+    padding: 0.75rem 1.8rem !important;
+    color: #aaa !important;
+    font-weight: 700 !important;
+    font-size: 0.95rem !important;
+    text-decoration: none !important;
+    transition: all 0.25s ease !important;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li:hover {
+    border-color: #555 !important;
+    background: #222 !important;
+    transform: translateY(-2px) !important;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li:hover a {
+    color: #fff !important;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li.active {
+    background: var(--accent) !important;
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 20px rgba(255, 0, 91, 0.45) !important;
+    transform: translateY(-2px) !important;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li.active a {
+    color: #fff !important;
+}
+
+/* Tab Content Panel */
+.woocommerce div.product .woocommerce-tabs .panel {
+    background: #141414 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 18px !important;
+    padding: 2.5rem !important;
+    color: #ccc !important;
+    line-height: 1.85 !important;
+    font-size: 1.05rem !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6) !important;
+    margin: 0 !important;
+}
+.woocommerce div.product .woocommerce-tabs .panel h2 {
+    color: #fff !important;
+    font-size: 1.7rem !important;
+    font-weight: 900 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    margin-bottom: 1.4rem !important;
+    display: inline-block !important;
+    position: relative !important;
+}
+.woocommerce div.product .woocommerce-tabs .panel h2::after {
+    content: "";
+    display: block;
+    width: 45px;
+    height: 3px;
+    background: var(--accent);
+    margin-top: 8px;
+    border-radius: 2px;
+}
+
+/* -------------------------------------------------------------
+   Reviews & Rating Form
+-------------------------------------------------------------- */
+.woocommerce #reviews #comments ol.commentlist {
+    padding: 0 !important;
+    margin: 0 0 2.5rem 0 !important;
+    list-style: none !important;
+}
+.woocommerce #reviews #comments ol.commentlist li {
+    background: #181818 !important;
+    border: 1px solid #282828 !important;
+    border-radius: 14px !important;
+    padding: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+}
+.woocommerce #reviews #comments ol.commentlist li .comment-text {
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.woocommerce #reviews #comments ol.commentlist li .meta {
+    color: #888 !important;
+    font-size: 0.9rem !important;
+    margin-bottom: 0.5rem !important;
+}
+.woocommerce #reviews #comments ol.commentlist li .meta strong {
+    color: #fff !important;
+}
+.woocommerce .star-rating {
+    color: #ffbb00 !important;
+    font-size: 1rem !important;
+}
+.woocommerce .comment-form-rating .stars a {
+    color: #ffbb00 !important;
+}
+
+/* Review Form */
+.woocommerce #review_form #respond {
+    background: #111 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 16px !important;
+    padding: 2rem !important;
+}
+.woocommerce #review_form #respond .comment-reply-title {
+    color: #fff !important;
+    font-size: 1.3rem !important;
+    font-weight: 800 !important;
+    margin-bottom: 1rem !important;
+    text-transform: uppercase !important;
+}
+.woocommerce #review_form #respond input[type="text"],
+.woocommerce #review_form #respond input[type="email"],
+.woocommerce #review_form #respond textarea {
+    background: #181818 !important;
+    border: 1px solid #333 !important;
+    color: #fff !important;
+    border-radius: 10px !important;
+    padding: 0.8rem 1.2rem !important;
+    font-size: 1rem !important;
+    width: 100% !important;
+    transition: all 0.2s !important;
+}
+.woocommerce #review_form #respond input[type="text"]:focus,
+.woocommerce #review_form #respond input[type="email"]:focus,
+.woocommerce #review_form #respond textarea:focus {
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 14px rgba(255, 0, 91, 0.4) !important;
+    outline: none !important;
+}
+.woocommerce #review_form #respond input[type="submit"] {
+    background: var(--accent) !important;
+    color: #fff !important;
+    border-radius: 50px !important;
+    padding: 0.8rem 2.4rem !important;
+    font-weight: 800 !important;
+    border: none !important;
+    cursor: pointer !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    box-shadow: 0 4px 15px rgba(255, 0, 91, 0.45) !important;
+    transition: all 0.3s ease !important;
+}
+.woocommerce #review_form #respond input[type="submit"]:hover {
+    background: #ff2977 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 0 25px rgba(255, 0, 91, 0.7) !important;
+}
+
+/* -------------------------------------------------------------
+   Related & Upsell Products Section
+-------------------------------------------------------------- */
+.woocommerce .related.products,
+.woocommerce .upsells.products {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    margin-top: 5rem !important;
+    padding-top: 3.5rem !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    clear: both !important;
+}
+.woocommerce .related.products > h2,
+.woocommerce .upsells.products > h2 {
+    color: #fff !important;
+    font-size: 2rem !important;
+    font-weight: 900 !important;
+    text-transform: uppercase !important;
+    letter-spacing: -0.5px !important;
+    margin-bottom: 2.5rem !important;
+    text-align: center !important;
+}
+.woocommerce .related.products ul.products,
+.woocommerce .upsells.products ul.products,
+.woocommerce ul.products,
+.woocommerce-page ul.products {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 320px)) !important;
+    gap: 2rem !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    justify-content: center !important;
+    width: 100% !important;
+    list-style: none !important;
+    clear: both !important;
+}
+.woocommerce .related.products ul.products::before,
+.woocommerce .related.products ul.products::after,
+.woocommerce ul.products::before,
+.woocommerce ul.products::after {
+    display: none !important;
+}
+
+/* -------------------------------------------------------------
+   WooCommerce Product Loop Cards (Catalog & Related Products)
+-------------------------------------------------------------- */
+.woocommerce ul.products li.product,
+.woocommerce-page ul.products li.product,
+.woocommerce .related.products ul.products li.product,
+.woocommerce .upsells.products ul.products li.product,
+.woocommerce ul.products[class*="columns-"] li.product {
+    float: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    background: #141414 !important;
+    border-radius: 16px !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    overflow: hidden !important;
+    padding: 1.5rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    box-sizing: border-box !important;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+.woocommerce ul.products li.product:hover,
+.woocommerce-page ul.products li.product:hover {
+    transform: translateY(-6px) !important;
+    border-color: var(--accent) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.75), 0 0 20px rgba(255, 0, 91, 0.2) !important;
+}
+.woocommerce ul.products li.product a {
+    text-decoration: none !important;
+    color: inherit !important;
+    display: block !important;
+}
+.woocommerce ul.products li.product a img,
+.woocommerce ul.products li.product img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1 / 1 !important;
+    object-fit: cover !important;
+    border-radius: 12px !important;
+    margin: 0 0 1rem 0 !important;
+    display: block !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5) !important;
+}
+.woocommerce ul.products li.product .woocommerce-loop-product__title {
+    color: #fff !important;
+    font-size: 1.15rem !important;
+    font-weight: 700 !important;
+    margin: 0.5rem 0 0.5rem 0 !important;
+    line-height: 1.4 !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+    white-space: normal !important;
+}
+.woocommerce ul.products li.product .price {
+    color: var(--accent) !important;
+    font-size: 1.2rem !important;
+    font-weight: 800 !important;
+    margin-bottom: 1.2rem !important;
+    display: block !important;
+}
+.woocommerce ul.products li.product .button {
+    background: var(--accent) !important;
+    color: #fff !important;
+    border-radius: 50px !important;
+    padding: 0.75rem 1.6rem !important;
+    font-weight: 800 !important;
+    text-align: center !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    font-size: 0.88rem !important;
+    transition: all 0.25s ease !important;
+    box-shadow: 0 4px 15px rgba(255, 0, 91, 0.4) !important;
+    margin-top: auto !important;
+    display: block !important;
+}
+.woocommerce ul.products li.product .button:hover {
+    background: #ff2977 !important;
+    box-shadow: 0 0 22px rgba(255, 0, 91, 0.7) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* -------------------------------------------------------------
+   WooCommerce Shop Archive, Tables, Alerts, Checkout
+-------------------------------------------------------------- */
+.woocommerce h1.page-title {
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+}
+.woocommerce .woocommerce-result-count,
+.woocommerce .woocommerce-ordering select {
+    color: #ccc;
+    background: #181818;
+    border: 1px solid #333;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+}
+
+.woocommerce-message, 
+.woocommerce-info, 
+.woocommerce-error {
+    background: #181818 !important;
+    color: #fff !important;
+    border-top-color: var(--accent) !important;
+    border-radius: 8px;
+}
+.woocommerce-message .button,
+.woocommerce-info .button {
+    background: var(--accent) !important;
+    color: #fff !important;
+    border-radius: 50px;
+}
+table.shop_table {
+    border: 1px solid #2a2a2a !important;
+    border-radius: 12px;
+    background: #141414;
+    color: #eee;
+}
+table.shop_table th {
+    color: var(--accent);
+    background: #1a1a1a;
+}
+table.shop_table td {
+    border-top: 1px solid #2a2a2a !important;
+}
+.woocommerce form .form-row input.input-text,
+.woocommerce form .form-row textarea {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    color: #fff;
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+}
+.woocommerce form .form-row input.input-text:focus,
+.woocommerce form .form-row textarea:focus {
+    border-color: var(--accent);
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 0, 91, 0.3);
+}
+.woocommerce #payment {
+    background: #161616 !important;
+    border-radius: 12px;
+}
+
+/* -------------------------------------------------------------
+   Prevent Duplicate Google Pay & Apple Pay Buttons (PayPal + Stripe)
+-------------------------------------------------------------- */
+/* 1. Target WooCommerce Cart & Checkout Blocks express payment items */
+.wc-block-components-express-payment__event-buttons > li:nth-child(3),
+.wc-block-components-express-payment__event-buttons > li:has(iframe[title*="Google Pay"]) ~ li:has(iframe[title*="Google Pay"]),
+.wc-block-components-express-payment__event-buttons > li:has(iframe[src*="google.com"]) ~ li:has(iframe[src*="google.com"]),
+.wc-block-components-express-payment__event-buttons > li:has([data-funding-source="googlepay"]),
+.wc-block-components-express-payment__event-buttons > li:has([class*="googlepay"]),
+.wc-block-components-express-payment__event-buttons > li:has([id*="googlepay"]),
+.wc-block-components-express-payment__event-buttons > li:has(.zial-google-pay-button),
+.wc-block-components-express-payment__event-buttons > li:has(.paypal-button-context-googlepay),
+.wc-block-components-express-payment__event-buttons > li:has([id*="ppcp-googlepay"]) {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    max-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* 2. Target Classic PayPal Smart Buttons Google Pay / Apple Pay */
+.paypal-buttons [data-funding-source="googlepay"],
+.paypal-button-container [data-funding-source="googlepay"],
+.ppc-button-wrapper [data-funding-source="googlepay"],
+div[data-funding-source="googlepay"],
+.paypal-button-row.paypal-button-context-googlepay,
+.zial-google-pay-button,
+#paypal-googlepay-button,
+.ppcp-button.googlepay,
+.paypal-buttons .paypal-button-row:has([data-funding-source="googlepay"]),
+.paypal-buttons [data-funding-source="applepay"],
+.paypal-button-container [data-funding-source="applepay"],
+.ppc-button-wrapper [data-funding-source="applepay"],
+div[data-funding-source="applepay"],
+.paypal-buttons .paypal-button-row:has([data-funding-source="applepay"]) {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    max-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* 3. If multiple Stripe payment request containers occur sequentially on cart/checkout */
+.wc-stripe-payment-request-wrapper ~ .wc-stripe-payment-request-wrapper,
+#wc-stripe-payment-request-wrapper ~ #wc-stripe-payment-request-wrapper {
+    display: none !important;
+}

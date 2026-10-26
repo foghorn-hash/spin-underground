@@ -27,7 +27,7 @@ add_action( 'after_setup_theme', 'spinunderground_setup' );
  */
 function spinunderground_scripts() {
 	// Google Fonts
-	wp_enqueue_style( 'spinunderground-fonts', 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap', array(), null );
+	wp_enqueue_style( 'spinunderground-fonts', 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap', array(), null );
 	
 	// Bootstrap Icons
 	wp_enqueue_style( 'bootstrap-icons', 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css', array(), '1.11.3' );
@@ -35,7 +35,8 @@ function spinunderground_scripts() {
 	// Theme stylesheet
 	wp_enqueue_style( 'spinunderground-style', get_stylesheet_uri(), array(), wp_get_theme()->get( 'Version' ) );
 
-    // Main JS (we will enqueue it inline for now, or you can extract it)
+	// Releases Store Script
+	wp_enqueue_script( 'spinunderground-releases-store', get_template_directory_uri() . '/assets/releases-store.js', array(), wp_get_theme()->get( 'Version' ), true );
 }
 add_action( 'wp_enqueue_scripts', 'spinunderground_scripts' );
 
@@ -44,6 +45,11 @@ add_action( 'wp_enqueue_scripts', 'spinunderground_scripts' );
  */
 require get_template_directory() . '/inc/artists-setup.php';
 require get_template_directory() . '/inc/front-page-setup.php';
+
+/**
+ * WooCommerce setup & releases
+ */
+require get_template_directory() . '/inc/woocommerce-setup.php';
 
 /**
  * Customizer settings
